@@ -1,0 +1,640 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy:   #0a0e1a;
+  --deep:   #060810;
+  --wave:   #e8f4ff;
+  --gold:   #f0c040;
+  --red:    #e8223a;
+  --cyan:   #1ac8e8;
+  --white:  #ffffff;
+  --gray:   #8899aa;
+
+  --font-ja: 'Noto Sans JP', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+img {
+max-width: 100%;
+}
+
+body {
+  font-family: var(--font-ja);
+  background: var(--navy);
+  color: var(--wave);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.hero-period h3{
+    color:#fff;
+}
+
+.hero-period{
+    margin-top:20px;
+    font-size:clamp(1.4rem,4vw,2rem);
+    font-weight:800;
+    color:#fff;
+    text-shadow:0 2px 8px rgba(0,0,0,.8);
+    opacity:0;
+    animation:fadeUp 0.8s 0.9s forwards;
+
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 8, 16, 0.55) 0%,
+    rgba(6, 8, 16, 0.15) 40%,
+    rgba(6, 8, 16, 0.70) 85%,
+    rgba(6, 8, 16, 1.00) 100%
+  );
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  padding: 40px 32px 0;
+  max-width: 640px;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.hero-title .line1,
+.hero-title .line2 {
+  display: block;
+  margin-top: 20px; /* 行間 */
+  font-weight: 900;
+  color: var(--white);
+  text-shadow:
+    0 0 30px rgba(240, 192, 64, 0.6),
+    0 2px 6px rgba(0,0,0,0.9);
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.hero-title .line1 {
+  font-size: clamp(1.9rem, 9.5vw, 4rem);
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.hero-title .line2 {
+  font-size: clamp(1.3rem, 7.6vw, 4.5rem);
+  margin-top: 20px;
+  color: var(--gold);
+  text-shadow:
+    0 0 40px rgba(240, 192, 64, 0.9),
+    0 0 10px rgba(240, 192, 64, 0.5),
+    0 2px 8px rgba(0,0,0,0.9);
+  animation: fadeUp 0.8s 0.7s forwards;
+  white-space: nowrap;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  color: var(--wave);
+  opacity: 0;
+  letter-spacing: 0.08em;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+
+/* scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s forwards;
+}
+
+.scroll-arrow {
+  font-size: 1.4rem;
+  color: var(--cyan);
+  animation: bounce 1.4s infinite;
+}
+
+.scroll-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gray);
+}
+
+/* ============================================================
+   RULES SECTION
+   ============================================================ */
+.rules-section {
+  position: relative;
+  background: var(--deep);
+  padding: 80px 24px 100px;
+}
+
+.rules-section::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--gold), var(--red));
+  margin-bottom: 64px;
+}
+
+.rules-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.rules-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.rules-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+
+/* rule cards */
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.rule-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(26, 200, 232, 0.15);
+  border-left: 4px solid var(--cyan);
+  border-radius: 4px;
+  padding: 28px 28px 28px 24px;
+  overflow: hidden;
+
+  /* scroll reveal: start hidden */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+}
+
+.rule-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.rule-card:nth-child(1) { transition-delay: 0.05s; border-left-color: var(--cyan); }
+.rule-card:nth-child(2) { transition-delay: 0.20s; border-left-color: var(--gold); }
+.rule-card:nth-child(3) { transition-delay: 0.35s; border-left-color: var(--red);  }
+
+.rule-card:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.rule-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
+  width: 72px;
+  text-align: center;
+  user-select: none;
+}
+
+.rule-heading {
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.rule-text {
+  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.rule-note {
+  font-size: 0.78rem;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+}
+
+.rule-deco {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,200,232,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   FLOATING ACTION BUTTON
+   ============================================================ */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 100;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4940a 100%);
+  box-shadow:
+    0 4px 20px rgba(240, 192, 64, 0.55),
+    0 2px 6px rgba(0,0,0,0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 2px;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fabPulse 2.4s ease-in-out infinite;
+}
+
+.fab:hover {
+  transform: scale(1.10);
+  box-shadow:
+    0 6px 28px rgba(240, 192, 64, 0.75),
+    0 2px 8px rgba(0,0,0,0.5);
+  animation-play-state: paused;
+}
+
+.fab-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.fab-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   ENTRY FORM SECTION
+   ============================================================ */
+.form-section {
+  background: var(--navy);
+  padding: 80px 24px 80px;
+  border-top: 1px solid rgba(26,200,232,0.12);
+}
+
+.form-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.form-title {
+  font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 16px;
+  letter-spacing: 0.06em;
+}
+
+.form-desc {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field-group input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(26,200,232,0.25);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: var(--white);
+  font-family: var(--font-ja);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.field-group input:focus {
+  border-color: var(--cyan);
+  background: rgba(26,200,232,0.06);
+}
+
+.field-group input::placeholder {
+  color: var(--gray);
+  opacity: 0.7;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 16px 0;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4940a 100%);
+  color: var(--navy);
+  font-family: var(--font-ja);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.submit-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-notice {
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--cyan);
+  min-height: 1.2em;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--deep);
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(240, 192, 64, 0.55), 0 2px 6px rgba(0,0,0,0.5); }
+  50%       { box-shadow: 0 4px 32px rgba(240, 192, 64, 0.85), 0 2px 8px rgba(0,0,0,0.5); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+  .hero-text {
+    padding: 28px 20px 0;
+  }
+
+  .rule-card {
+    gap: 28px;
+    padding: 20px 16px;
+  }
+
+  .rule-number {
+    font-size: 2.4rem;
+    width: 48px;
+  }
+
+  .fab {
+    width: 68px;
+    height: 68px;
+    bottom: 20px;
+    right: 16px;
+  }
+
+  .rules-section { padding: 56px 16px 72px; }
+  .rules-header { margin-bottom: 40px; }
+  .rules-list { gap: 18px; }
+  .form-section { padding: 56px 16px 56px; }
+  .button-area { gap: 16px; }
+  .big-btn { padding: 20px; font-size: 18px; }
+  .fab-label { font-size: 0.5rem; }
+}
+
+.button-area{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.big-btn{
+    width:100%;
+    max-width:280px;
+    padding:28px;
+    text-align:center;
+    text-decoration:none;
+    border-radius:12px;
+    font-size:24px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.entry-btn{
+    background:#1ac8e8;
+    color:white;
+}
+
+.submit-btn2{
+    background:#f0c040;
+    color:#111;
+}
+
+.big-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+/* ============================================================
+   ADDITIONS — 参加対象 / 参加方法 / 評価方法 / 景品 / 問い合わせ先
+   (既存の .rules-section / .rule-card の見た目をそのまま流用)
+   ============================================================ */
+
+/* 評価方法：カード一覧の上に置くリード文 */
+.judging-lead {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--wave);
+  line-height: 1.8;
+}
+
+/* 景品：絵文字を rule-number として使う場合のサイズ調整 */
+.rule-card .rule-number {
+  font-size: 3.5rem;
+}
+
+.Instagram img {
+  width: 90px;   /* 好きなサイズに変更 */
+  height: 90px;
+  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;  
+
+    position: relative;
+  left: -10px; 
+}
+
+.instagram-link {
+  color: rgb(0, 95, 238); /* Instagramっぽい色 */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.instagram-link:hover {
+  opacity: 0.7;
+}
+
+  @media (max-width: 480px) {
+  .Instagram img {
+    width: 60px;
+    height: 60px;
+    left: 6px;
+  }
+}
+
+
+/* 問い合わせ先：rule-card を <a> として使う場合のリンク解除 */
+a.rule-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+a.rule-card:hover {
+  border-left-color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
