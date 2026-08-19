@@ -692,3 +692,15 @@ a.rule-card:hover {
     font-size: 14px;
   }
 }
+
+
+/* ===== 応募写真の例 ===== */
+.example-photo {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
